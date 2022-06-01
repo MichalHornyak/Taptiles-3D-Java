@@ -1,0 +1,138 @@
+#test for SCORE
+POST http://localhost:8080/api/score
+Content-Type: application/json
+
+{
+  "game": "taptiles",
+  "player": "Test1",
+  "points": "10000",
+  "boardSize": "10",
+  "playedDate": "2021-04-13T22:40:03.756"
+}
+
+###
+
+POST http://localhost:8080/api/score
+Content-Type: application/json
+
+{
+  "game": "taptiles",
+  "player": "Test2",
+  "points": "1500",
+  "boardSize": "10",
+  "playedDate": "2021-04-13T22:40:03.711"
+}
+
+###
+
+POST http://localhost:8080/api/score
+Content-Type: application/json
+
+{
+"game": "taptiles",
+"player": "Test3",
+"points": "1800",
+"boardSize": "10",
+"playedDate": "2021-04-13T22:40:03.800"
+}
+
+###
+
+POST http://localhost:8080/api/score
+Content-Type: application/json
+
+{
+  "game": "taptiles",
+  "player": "Test4",
+  "points": "1253",
+  "boardSize": "10",
+  "playedDate": "2021-04-13T22:40:03.800"
+}
+
+###
+#test for RATING
+POST http://localhost:8080/api/rating
+Content-Type: application/json
+
+{
+  "game": "taptiles",
+  "player": "test5",
+  "rating": "3",
+  "playedDate": "2021-04-13T22:40:03.130"
+}
+
+###
+POST http://localhost:8080/api/rating
+Content-Type: application/json
+
+{
+  "game": "taptiles",
+  "player": "test6",
+  "rating": "4",
+  "playedDate": "2021-04-13T22:40:03.800"
+}
+###
+POST http://localhost:8080/api/rating
+Content-Type: application/json
+
+{
+  "game": "taptiles",
+  "player": "test7",
+  "rating": "1",
+  "playedDate": "2021-04-13T22:40:04.777"
+}
+###
+POST http://localhost:8080/api/rating
+Content-Type: application/json
+
+{
+  "game": "taptiles",
+  "player": "test8",
+  "rating": "5",
+  "playedDate": "2021-04-13T22:40:03.999"
+}
+
+###
+#test for COMMENT
+POST http://localhost:8080/api/comment
+Content-Type: application/json
+
+{
+  "game": "taptiles",
+  "player": "test9",
+  "comment": "I love this game!!!",
+  "playedDate": "2021-04-13T22:40:03.999"
+}
+
+###
+POST http://localhost:8080/api/comment
+Content-Type: application/json
+
+{
+"game": "taptiles",
+"player": "test10",
+"comment": "It was hard to win.",
+"playedDate": "2021-04-13T22:40:03.999"
+}
+
+###
+POST http://localhost:8080/api/comment
+Content-Type: application/json
+
+{
+  "game": "taptiles",
+  "player": "test11",
+  "comment": "Almost made a new highscores but my timer ran out.",
+  "playedDate": "2021-04-13T22:40:03.999"
+}
+
+###
+POST http://localhost:8080/api/comment
+Content-Type: application/json
+
+{
+  "game": "taptiles",
+  "player": "test12",
+  "comment": "Kinda best game I have ever played",
+  "playedDate": "2021-04-13T22:40:03.999"
+}

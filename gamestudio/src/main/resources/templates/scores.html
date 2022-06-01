@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gamestudio</title>
+    <link rel="stylesheet" href="/css/screenstyle.css"/>
+</head>
+<body id="scores">
+<main id="header">
+    <div class="user-services-container">
+        <div class="user-service-title">
+            <h2>
+                HIGHSCORES
+            </h2>
+        </div>
+        <div class="user-services-content">
+            <div class="services-title-container">
+                <hr>
+                <h2>Scores for board size</h2>
+                <div th:utext="${@servicesController.scoreTemplate}"/>
+                <hr>
+            </div>
+            <div class="services-title-container">
+
+                <ol>
+                    <li th:each="score : ${scores}">
+                        <span th:text="${score.player}"/>
+                        <span th:text="${score.points}"/>
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <a href="/">
+            <div id="menu-navigator">
+                <img src="/images/taptiles/arrow.svg" style="transform: rotate(90deg)">
+                <h2 class="service">MAIN MENU
+                    <hr class="cross-line">
+                </h2>
+            </div>
+        </a>
+    </div>
+</main>
+<script type="module" src="/js/functions.js"></script>
+
+</body>
+</html>

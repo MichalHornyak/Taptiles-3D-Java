@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gamestudio</title>
+    <link rel="stylesheet" href="/css/screenstyle.css"/>
+</head>
+<body id="rules">
+<main id="header">
+
+    <a href="/">
+        <div id="menu-navigator">
+            <img src="/images/taptiles/arrow.svg" style="transform: rotate(90deg)">
+            <h2 class="service">MAIN MENU
+                <hr class="cross-line">
+            </h2>
+        </div>
+    </a>
+    <div class="rules-container">
+        <div class="rules-content video">
+            <div class="arrow-container">
+                <img src="/images/taptiles/arrow.svg" style="width: 8vw; transform: rotate(90deg);" id="rulesLeft">
+            </div>
+            <img src="/images/taptiles/rule1.gif"  id="ruleVideo">
+            <div class="arrow-container">
+                <img src="/images/taptiles/arrow.svg" style="width: 8vw; transform: rotate(-90deg);"  id="rulesRight">
+            </div>
+        </div>
+        <div class="rules-content description">
+            <h2 id="ruleTitle">
+                ACCESSIBLE TILES
+            </h2>
+            <p id="ruleDesciption">
+                IF YOU HOVER ACCESSIBLE TILE, IT WILL DISPLAY IN THE RIGHT BORDER. ACCESSIBLE TILE ARE THE ONES WHICH ARE FREE FROM THE FRONT OR BACK AND LEFT OR RIGHT. BOTH CONDITIONS MUST BE TRUE.
+            </p>
+        </div>
+    </div>
+</main>
+<script type="module" src="/js/functions.js"></script>
+
+</body>
+</html>

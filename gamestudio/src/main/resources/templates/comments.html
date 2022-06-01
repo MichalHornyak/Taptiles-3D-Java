@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gamestudio</title>
+    <link rel="stylesheet" href="/css/screenstyle.css"/>
+</head>
+<body id="comments">
+<main id="header">
+    <div class="user-services-container">
+        <div class="user-service-title">
+            <h2>
+                COMMENTS
+
+            </h2>
+        </div>
+        <div class="user-services-content" >
+            <div id="comment-container">
+                <div th:each="comment : ${comments}" style="width: 100%;">
+                    <div class="service-container-title">
+                        <h2 th:text="${comment.player}"/>
+                        <h4>::</h4>
+                        <h4 th:text="${comment.commentedOn}"/>
+                    </div>
+                    <div th:text="${comment.comment}"/>
+                    <hr>
+                </div>
+            </div>
+            <div class="service-form-container">
+                <form action="/services/comments/newcomment" method="get" th:if="${@userController.logged}"
+                      class="service-form-content">
+                    <div class="form-field">
+                        <input type="text" name="commentText" placeholder=" " autocomplete="off" maxlength="255"
+                               required/>
+                        <label for="comment-container" class="label-name">
+                    <span class="form-content-name">
+                        YOUR COMMENT
+                    </span>
+                        </label>
+                    </div>
+                    <input type="submit" style="margin-top: 1vw" value="SUBMIT" id="submit-comment"/>
+                </form>
+                <div th:if="not ${@userController.logged}" style="font-size: 1.5vw">
+                    YOU NEED TO <a href="/" style="color: white; font-weight: bolder" class="service">SIGN IN<hr class="cross-line"></a> TO ADD COMMENT
+                </div>
+            </div>
+        </div>
+        <a href="/">
+            <div id="menu-navigator">
+                <img src="/images/taptiles/arrow.svg" style="transform: rotate(90deg)">
+                <h2 class="service" style="mix-blend-mode: difference">MAIN MENU
+                    <hr class="cross-line">
+                </h2>
+            </div>
+        </a>
+    </div>
+</main>
+<script type="module" src="/js/functions.js"></script>
+
+</body>
+</html>

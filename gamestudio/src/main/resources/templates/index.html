@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gamestudio</title>
+    <link rel="stylesheet" href="/css/screenstyle.css"/>
+</head>
+<body id="index">
+<!--/*@thymesVar id="userController" type="sk.tuke.gamestudio.server.controller.UserController"*/-->
+<main id="header">
+    <div class="services-container" id="services-menu">
+        <div class="services-content">
+            <a href="/services/scores">
+                <h1 class="service">
+                    HIGHSCORES
+                    <hr class="cross-line">
+                </h1>
+            </a>
+            <a href="/services/comments">
+                <h1 class="service">
+                    COMMENTS
+                    <hr class="cross-line">
+                </h1>
+            </a>
+            <a href="/services/ratings">
+                <h1 class="service">
+                    RATINGS
+                    <hr class="cross-line">
+                </h1>
+            </a>
+            <br>
+            <br>
+            <br>
+            <h1 class="service return">
+                BACK
+                <hr class="cross-line">
+            </h1>
+        </div>
+    </div>
+    <div class="services-container" id="login-menu">
+        <div class="services-content">
+            <form action="/login" method="post" th:if="not ${@userController.logged}">
+                <div class="form">
+                    <div class="form-field">
+                        <input type="text" name="login" id="username" placeholder=" " autocomplete="off" maxlength="12"
+                               required/>
+                        <label for="username" class="label-name">
+                    <span class="form-content-name">
+                        USERNAME
+                    </span>
+                        </label>
+                    </div>
+                    <div class="form-field">
+                        <input type="password" name="password" id="password" placeholder=" " autocomplete="off"
+                               required/>
+                        <label for="password" class="label-name">
+                    <span class="form-content-name">
+                        PASSWORD
+                    </span>
+                        </label>
+                    </div>
+                    <br>
+                    <button type="submit" class="service">
+                        SIGN IN
+                        <hr class="cross-line">
+                    </button>
+                </div>
+            </form>
+            <div th:if="${@userController.logged}">
+                <a href="/logout">
+                    <h1 class="service">
+                        SIGN OUT
+                        <hr class="cross-line">
+                    </h1>
+                </a>
+            </div>
+            <br>
+            <br>
+            <h1 class="service return">
+                BACK
+                <hr class="cross-line">
+            </h1>
+        </div>
+    </div>
+    <div class="services-container" id="board-size-menu">
+        <div class="services-content">
+            <a href="/taptiles/new?size=2">
+                <h1 class="service">
+                     2x2
+                    <hr class="cross-line">
+                </h1>
+            </a>
+            <a href="/taptiles/new?size=3">
+                <h1 class="service">
+                     3x3
+                    <hr class="cross-line">
+                </h1>
+            </a>
+            <a href="/taptiles/new?size=4">
+                <h1 class="service">
+                    4x4
+                    <hr class="cross-line">
+                </h1>
+            </a>
+            <a href="/taptiles/new?size=5">
+                <h1 class="service">
+                    5x5
+                    <hr class="cross-line">
+                </h1>
+            </a>
+            <a href="/taptiles/new?size=6">
+                <h1 class="service">
+                    6x6
+                    <hr class="cross-line">
+                </h1>
+            </a>
+            <br>
+            <h1 class="service return">
+                BACK
+                <hr class="cross-line">
+            </h1>
+        </div>
+    </div>
+    <div class="top">
+        <div class="menu-container" id="menu">
+
+            <h1 id="big-center-content">
+            </h1>
+            <h2 class="top-left-logo">
+                 TAPTILES by Michal Hornyák
+            </h2>
+            <div class="photo-menu-container" id="nav1">
+                <h1 class="menu-text">PLAY
+                    <hr class="cross-line">
+                </h1>
+                <span id="not-signed-in-message">
+                    <span th:if="not ${@userController.logged}">- You are not signed in -<br> Your score won't be saved</span>
+                </span>
+            </div>
+            <a href="/rules">
+                <div class="photo-menu-container" id="nav2">
+                    <h1 class="menu-text">RULES
+                        <hr class="cross-line">
+                    </h1>
+                </div>
+            </a>
+            <div class="photo-menu-container" id="nav3">
+                <h1 class="menu-text">SERVICES
+                    <hr class="cross-line">
+                </h1>
+            </div>
+            <div class="photo-menu-container" id="nav4">
+                <h1 class="menu-text">ACCOUNT
+                    <hr class="cross-line">
+                </h1>
+            </div>
+        </div>
+    </div>
+
+</main>
+<script type="module" src="/js/functions.js"></script>
+
+</body>
+</html>

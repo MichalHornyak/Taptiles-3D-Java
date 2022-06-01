@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/css/screenstyle.css"/>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body id="taptiles">
+<a href="/">
+    <div id="menu-navigator">
+        <img src="/images/taptiles/arrow.svg" style="transform: rotate(90deg)">
+        <h2 class="service">MAIN MENU
+            <hr class="cross-line">
+        </h2>
+    </div>
+</a>
+<main id="board">
+    <div class="top-bar-container">
+        <div class="top-center-navigation">
+            <a href="/taptiles/shuffle" id="shuffle">
+                <img src="/images/taptiles/shuffle.svg">
+            </a>
+            <div class="top-left-content" th:utext="${@taptilesController.score}"/>
+            <div class="top-right-content">
+                <img src='/images/taptiles/hourglass.svg'>
+
+                <h1 id="time-clock">
+                </h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="board-container">
+        <div class="tile-help-container hovered">
+            <img src="" id="hoveredTile">
+        </div>
+        <div class="tile-help-container marked" th:utext="${@taptilesController.markedTile}" id="markedTile"/>
+        <span class="board-container-content" th:utext="${@taptilesController.htmlField}">
+    </span>
+        </table>
+    </div>
+
+
+    <div class="rotation-container">
+        <a href="/taptiles/left">
+            <img src="/images/taptiles/turn-left.svg" id="turnleft">
+        </a>
+
+        <a href="/taptiles/right">
+            <img src="/images/taptiles/turn-right.svg" id="turnright">
+        </a>
+    </div>
+</main>
+<main id="end-message">
+    <div class="center-container">
+        <h1 id="gameState">
+
+        </h1>
+        <div style="display: flex; color: white;">
+            <h1>
+                SCORE:
+            </h1>
+            <h1 id="finalScore">
+            </h1>
+        </div>
+    </div>
+</main>
+<script type="module" src="/js/functions.js"></script>
+<script th:inline="javascript">
+    let time = [[${@taptilesController.time}]];
+    document.getElementById("time-clock").innerHTML = time
+    if ([[${@taptilesController.getGameState}]] === "PLAYING") {
+        let timer = setInterval(updateTime, 1000);
+    } else {
+        document.getElementById("board").style.display = "none"
+        document.getElementById("gameState").innerHTML = [[${@taptilesController.getGameState}]]
+        document.getElementById("finalScore").innerHTML = [[${@taptilesController.finalScore}]]
+    }
+
+    function updateTime() {
+        if (time > 0) {
+            time = time - 1
+            document.getElementById("time-clock").innerHTML = time
+        } else {
+            document.getElementById("board").style.display = "none"
+            document.getElementById("gameState").innerHTML = "LOST"
+            document.getElementById("finalScore").innerHTML = [[${@taptilesController.finalScore}]]
+
+        }
+    }
+</script>
+
+</body>
+</html>

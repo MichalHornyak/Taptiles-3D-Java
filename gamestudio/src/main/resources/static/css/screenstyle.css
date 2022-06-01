@@ -1,0 +1,896 @@
+body {
+    color: white;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    font-family: "Tw Cen MT";
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: black;
+    background-image: url("/images/taptiles/jungle4.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@keyframes reveal {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+main {
+    position: relative;
+    height: 100vh;
+}
+
+.top-bar-container {
+    display: flex;
+    justify-content: space-around;
+    height: 8vh;
+    padding-top: 1vh;
+}
+
+.top-center-navigation {
+    color: white;
+    width: 60vw;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+.top-left-content {
+    width: 40%;
+    padding-right: 3%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.top-right-content {
+    width: 40%;
+    padding-left: 3%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.board-container {
+    height: 78vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.board-container-content {
+    width: 100%;
+}
+
+h1 {
+    font-size: 4vw;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+}
+
+.tile-container {
+    width: 200px;
+    height: 200px;
+    left: 0;
+    top: 0;
+}
+
+table {
+    width: 100%;
+    border-spacing: 0;
+}
+
+.taptiles-game-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-spacing: 0;
+    height: 75vh;
+}
+
+td {
+    position: absolute;
+}
+
+.tile-accessible-container {
+    position: absolute;
+    filter: brightness(100%) contrast(100%);
+    transition: 0.3s ease-in-out;
+}
+
+.tile-accessible-container:hover {
+    position: absolute;
+    filter: brightness(103%) contrast(175%);
+    transition: 0.3s ease-in-out;
+}
+
+.tile-marked-container {
+    position: absolute;
+    transition: 0.3s ease-in-out;
+    filter: brightness(125%) contrast(175%);
+}
+
+.tile-inaccessible-container {
+    position: absolute;
+}
+
+.tile-help-container {
+    overflow: hidden;
+    z-index: 10000;
+    border-left: rgba(255, 255, 255, 0.9) solid 0.3vh;
+    border-right: rgba(255, 255, 255, 0.9) solid 0.3vh;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 10%;
+    top: 50%;
+    width: 10vw;
+    height: 10vw;
+    transform: translateY(-50%) translateX(-50%);
+    transition: 0.5s ease-in-out;
+}
+
+.tile-help-container img {
+    filter: brightness(105%) contrast(150%);
+    width: 80%;
+}
+
+.hovered {
+    left: 90%;
+}
+
+.marked {
+    left: 10%;
+}
+
+.center-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.rotation-container {
+    width: 100%;
+    height: 11vh;
+    padding-bottom: 2vh;
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.rotation-container a {
+    padding: 10px;
+    width: 30vw;
+    display: flex;
+    justify-content: center;
+}
+
+.rotation-container a img {
+    height: 11vh;
+}
+
+.rotate-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#turnleft, #turnright {
+    opacity: 0.7;
+    transition: 0.3s ease-in-out;
+}
+
+#turnleft:hover {
+    opacity: 1;
+
+}
+
+#turnright:hover {
+    opacity: 1;
+}
+
+#shuffle {
+    position: absolute;
+    left: 50%;
+    top: 70%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+#shuffle img {
+    width: 5vw;
+    opacity: 1;
+    border-radius: 50%;
+    border-left: rgba(255, 255, 255, 1) solid 0.3vh;
+    border-right: rgba(255, 255, 255, 1) solid 0.3vh;
+}
+
+.accessible {
+    transition: 0.2s ease-in-out;
+}
+
+
+.top {
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-container {
+    height: 100vh;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+#menu {
+    opacity: 1;
+    transition: 0.5s ease-in-out;
+}
+
+.menu-text {
+    position: relative;
+    z-index: 999;
+    text-align: center;
+    font-size: 3vw;
+    align-items: center;
+    margin: 0;
+    cursor: pointer;
+    color: white;
+    opacity: 0.7;
+    font-weight: bold;
+    transition: 0.5s ease-in-out;
+    overflow: hidden;
+}
+
+.visible-text {
+    opacity: 1;
+}
+
+.menu-image {
+    height: 100%;
+    transform: translateX(-5%);
+    transition: 1s ease-in-out;
+    filter: grayscale(1);
+    opacity: 0.5;
+}
+
+.visible-image {
+    filter: grayscale(0);
+    opacity: 1;
+}
+
+.clicked-text {
+    font-size: 90px;
+    opacity: 1;
+    left: -40px;
+}
+
+.clicked-image {
+    filter: grayscale(0);
+}
+
+.photo-menu-container {
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    height: 18vw;
+    width: 18vw;
+    background-image: url("/images/taptiles/jungle4.jpg");
+    background-position: center;
+    background-color: rgb(68, 75, 103);
+    background-blend-mode:  multiply;
+    border-radius: 50%;
+    box-shadow: 0 0 2vw 0.5vw black;
+    overflow: hidden;
+    margin: 0 2vw;
+    padding: 0;
+    transition: 0.4s ease-in-out;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+}
+
+.photo-menu-container:hover {
+    box-shadow: 0 0 0.1vw 0.3vw black;
+    background-image: url("/images/taptiles/jungle4.jpg");
+    background-position: center;
+    background-color: rgb(70, 171, 130);
+    background-blend-mode:  multiply;
+
+}
+
+
+.cross-line {
+    background: white;
+    height: 7%;
+    border: none;
+    width: 0%;
+    position: absolute;
+    z-index: +1;
+    left: 0%;
+    top: 0%;
+    transition: 0.5s ease-in-out;
+}
+
+
+.top-left-logo {
+    position: absolute;
+    right: 5px;
+    background: rgba(0, 0, 0, 0.5);
+    bottom: 5px;
+}
+
+h2 {
+    font-size: 1vw;
+    color: white;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+}
+
+.rules-container {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.rules-container p {
+    font-size: 1vw;
+}
+
+.rules-container h2 {
+    font-size: 2.5vw;
+}
+
+#rulesRight {
+    opacity: 1;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+#rulesLeft {
+    opacity: 0;
+    transition: 0.2s ease-in-out;
+}
+
+#ruleVideo {
+    z-index: 10;
+    width: 50vw;
+    border: rgba(255,255,255,0.7) 0.5vw solid;
+}
+
+.description {
+    text-align: justify;
+    width: 49vw;
+    height: 20vh;
+    margin: 0.5vw;
+    padding: 1vw;
+    background-image: url("/images/taptiles/jungle4.jpg");
+    background-position: center;
+    background-color: rgb(68, 75, 103);
+    background-blend-mode:  multiply;
+    color: white;
+    transition: 0.5s ease-in-out;
+}
+.description h2{
+    text-align: center;
+}
+
+.description p{
+    font-size: 1.5vw;
+}
+
+
+.video {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+#big-center-content {
+    opacity: 0;
+    text-align: center;
+    z-index: 0;
+    position: absolute;
+    color: white;
+    left: 50%;
+    top: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    font-size: 50vw;
+    filter: blur(10px);
+    transition: 0.2s ease-in;
+}
+
+#menu-navigator {
+    position: absolute;
+    align-items: center;
+    left: 0;
+    top: 1vh;
+    z-index: 100;
+    display: flex;
+    height: 3.5vh;
+}
+
+#menu-navigator img {
+    height: 100%;
+}
+
+#menu-navigator h2 {
+    font-size: 2vw;
+    padding: 0;
+}
+
+.services-container {
+    position: absolute;
+    height: 30vw;
+    width: 30vw;
+    left: 50%;
+    top: 50%;
+    background-image: url("/images/taptiles/jungle4.jpg");
+    background-position: center;
+    background-color: rgb(70, 171, 130);
+    background-blend-mode:  multiply;
+    border-radius: 50%;
+    box-shadow: 0 0 0.1vw 0.3vw black;
+    overflow: hidden;
+    margin: 0 2vw;
+    padding: 0;
+    display: none;
+}
+
+#services-menu {
+    transition: 0.4s ease-in-out;
+    transform: translateY(-50%) translateX(-20%) scale(0.6);
+}
+
+#login-menu {
+    transition: 0.6s ease-in-out;
+    transform: translateY(-50%) translateX(53%) scale(0.6);
+}
+
+#board-size-menu {
+    transition: 0.6s ease-in-out;
+    transform: translateY(-50%) translateX(-165%) scale(0.6);
+}
+
+.services-content {
+    padding-top: 1.6vw;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.services-content h1 {
+    font-size: 3vw;
+}
+
+.service {
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    color: white;
+    opacity: 0.7;
+    transition: 0.2s ease-in-out;
+}
+
+.services-content a {
+    text-decoration: none;
+}
+
+
+form {
+    width: 100%;
+}
+
+.form {
+    padding: 1vw 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 60%;
+    margin: auto;
+    position: relative;
+    color: white;
+    font-weight: bolder;
+}
+
+#form1 {
+    overflow: hidden;
+}
+
+.form-field {
+    overflow: hidden;
+    padding-top: 2vw;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.form-field input {
+    width: 100%;
+    height: 100%;
+    color: white;
+    padding-top: 0.5vw;
+    padding-bottom: 0.4vw;
+    background-color: transparent;
+    margin: 0;
+    border: 0;
+    left: 0;
+    outline: none;
+    font-size: 1.5vw;
+}
+
+.form-field label {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    border-bottom: 0.25vw solid white;
+}
+
+.form-field label::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    bottom: -0.15vw;
+    border-bottom: 0.25vw solid white;
+    transform: translateX(-102%);
+    transition: 0.3s ease;
+}
+
+.form-content-name {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.4s ease-in-out;
+}
+
+.form-field input:placeholder-shown + .label-name .form-content-name {
+    font-size: 2vw;
+}
+
+.form-field input:not(:placeholder-shown) + .label-name .form-content-name {
+    transform: translateY(-120%) translateX(-50%);
+    opacity: 0.2;
+    font-size: 2vw;
+}
+
+
+.form-field input:not(:required):focus + .label-name .form-content-name {
+    font-size: 1.5vw;
+}
+
+.form-field input:focus + .label-name .form-content-name {
+    transform: translateY(-120%) translateX(-50%);
+    opacity: 0.2;
+    font-size: 1.5vw;
+}
+
+
+.form-field input:not(:placeholder-shown):valid + .label-name .form-content-name {
+    font-size: 1.5vw;
+}
+
+.form-field input:valid + .label-name .form-content-name {
+    font-size: 1.5vw;
+}
+
+
+.form-field input:focus + .label-name::after {
+    transform: translateX(0%);
+}
+
+.form-field input:placeholder-shown + label {
+    position: absolute;
+    bottom: 0;
+    border-bottom: dotted;
+}
+
+.form-field input:not(:placeholder-shown):valid + label {
+    position: absolute;
+    bottom: 0;
+    border-bottom: dotted;
+}
+
+button {
+    background: none;
+    border: none;
+    font-size: 2.5vw;
+    font-weight: bold;
+}
+
+
+.user-services-container {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    width: 100%;
+    height: 100%;
+}
+
+
+.user-services-content {
+    background-image: url("/images/taptiles/jungle4.jpg");
+    background-position: center;
+    background-color: rgb(68, 75, 103);
+    background-blend-mode:  multiply;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    width: 45vw;
+    height: 40vw;
+    padding: 1vw;
+}
+
+.services-title-container {
+    text-align: center;
+    width: 100%;
+}
+
+.services-title-container h2 {
+    font-size: 2vw;
+}
+
+.services-title-container hr {
+    border: none;
+    height: 3%;
+    background: white;
+    margin-block-start: 0.5%;
+    margin-block-end: 2%;
+}
+
+.user-service-title {
+    text-align: center;
+    height: 40vw;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+}
+
+.user-service-title h2 {
+    font-size: 3.7vw;
+}
+
+ol {
+    z-index: 100;
+    font-size: 2.5vw;
+    color: white;
+    list-style-type: decimal;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    padding-inline-start: 0;
+    padding-left: 4vw;
+}
+
+li {
+    justify-content: space-around;
+    text-align: right;
+}
+
+#board-size-scale {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+
+#board-size-scale a {
+    cursor: pointer;
+}
+
+#title-full-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    width: 100%;
+}
+
+#left-part-title {
+    background: #9AECDB;
+    z-index: 2;
+}
+
+#board-size-score {
+    overflow: hidden;
+    text-align: left;
+    padding-left: 1vw;
+    animation: 0.8s forwards roll-out-menu;
+    z-index: 1;
+}
+
+#board-size-score h1 {
+    font-size: 5vw
+}
+
+
+#board-choose-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.board-size-selector {
+    font-size: 5vw;
+    padding: 0 1vw;
+    opacity: 0.5;
+    transition: 0.4s ease-in-out;
+    transform: translateY(25%);
+    cursor: pointer;
+    color: white;
+}
+
+.hover {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.chosen {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#not-signed-in-message {
+    position: absolute;
+    text-align: center;
+    display: unset;
+    opacity: 0;
+    color: white;
+    top: 57%;
+    font-size: 1vw;
+    transition: 0.2s ease-in-out;
+}
+
+#comment-container {
+    width: 100%;
+    height: 80%;
+    padding: 3%;
+    overflow-y: scroll;
+    font-size: 1.5em;
+}
+
+
+#comment-container h2{
+    font-size: 2vw;
+}
+#comment-container h4{
+    font-size: 1vw;
+    margin-bottom: 0.3vw;
+}
+
+
+#comment-container hr{
+    width: 100%;
+    height: 0.1vw;
+    background: white;
+    border: none;
+    margin-block-start: 0.4vw;
+    margin-block-end: 0.2vw;
+}
+.service-container-title{
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.service-container-title img{
+    width: 15%;
+}
+
+::-webkit-scrollbar {
+    width: 1vw;
+}
+::-webkit-scrollbar-thumb {
+    background: white;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.service-form-container{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.service-form-content {
+    width: 100%;
+    display: flex;
+    padding-right: 5%;
+    flex-direction: column;
+    align-items: center;
+}
+
+#rating-container{
+    width: 100%;
+    height: 65%;
+    font-size: 1.5em;
+    display: flex;
+    align-items: center;
+}
+
+#rating-player{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+#rating-player a{
+    width: 10%;
+}
+
+#rating-player a img{
+    width: 100%;
+}
+
+#submit-comment{
+    background: none;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#gameState{
+    color: white;
+    font-size: 15vw;
+    filter: brightness(1.5);
+}
+
+.arrow-container{
+    opacity: 0.7;
+    transition: 0.3s ease-in-out;
+}
+
+.arrow-container:hover{
+    opacity: 1;
+}

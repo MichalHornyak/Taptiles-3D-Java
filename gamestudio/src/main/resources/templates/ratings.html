@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gamestudio</title>
+    <link rel="stylesheet" href="/css/screenstyle.css"/>
+</head>
+<body id="ratings">
+<main id="header">
+    <div class="user-services-container">
+        <div class="user-service-title">
+            <h2>
+                RATINGS
+            </h2>
+        </div>
+        <div class="user-services-content" style="height: 30vw">
+            <div id="rating-container">
+                <div style="width: 100%">
+                    <div class="service-container-title" style="justify-content: center">
+                        <h1>AVERAGE RATING</h1>
+                    </div>
+                    <div class="service-container-title" style="justify-content: center;">
+                        <img src="/images/taptiles/star.svg" id="star1">
+                        <img src="/images/taptiles/star.svg" id="star2">
+                        <img src="/images/taptiles/star.svg" id="star3">
+                        <img src="/images/taptiles/star.svg" id="star4">
+                        <img src="/images/taptiles/star.svg" id="star5">
+                    </div>
+                    <div class="service-container-title" style="justify-content: center">
+                        <h1 th:text="${ratings}">
+                        </h1>
+                        <h1> /5</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="service-form-container" style="height: 35%">
+                <div th:if="${@userController.logged}" class="service-form-content" style="padding-right: 0">
+                    <div>
+                        <h2>
+                            YOUR RATING
+                        </h2>
+                    </div>
+                    <div id="rating-player">
+                        <a href="/services/ratings/addRating?rating=1"><img src="/images/taptiles/star.svg"
+                                                                            id="star-choice1" style="mix-blend-mode: difference"></a>
+                        <a href="/services/ratings/addRating?rating=2"><img src="/images/taptiles/star.svg"
+                                                                            id="star-choice2"></a>
+                        <a href="/services/ratings/addRating?rating=3"><img src="/images/taptiles/star.svg"
+                                                                            id="star-choice3"></a>
+                        <a href="/services/ratings/addRating?rating=4"><img src="/images/taptiles/star.svg"
+                                                                            id="star-choice4"></a>
+                        <a href="/services/ratings/addRating?rating=5"><img src="/images/taptiles/star.svg"
+                                                                            id="star-choice5"></a>
+                    </div>
+                    <h2>
+                        - SIGNED USER -
+                    </h2>
+                    <h2 th:text="${@userController.getLoggedUser.login}" style="font-size: 2vw"/>
+                </div>
+                <div th:if="not ${@userController.logged}" style="font-size: 1.5vw">
+                    YOU NEED TO <a href="/" style="color: white; font-weight: bolder" class="service">SIGN IN
+                    <hr class="cross-line">
+                </a> TO ADD RATING
+                </div>
+            </div>
+        </div>
+        <a href="/">
+            <div id="menu-navigator">
+                <img src="/images/taptiles/arrow.svg" style="transform: rotate(90deg)">
+                <h2 class="service">MAIN MENU
+                    <hr class="cross-line">
+                </h2>
+            </div>
+        </a>
+    </div>
+</main>
+<script type="module" src="/js/functions.js"></script>
+
+<script th:inline="javascript">
+    let averageRating = [[${ratings}]];
+    for (let i = 1; i <= averageRating; i++) {
+        document.getElementById("star" + i).src = "/images/taptiles/star-full.svg"
+    }
+
+    let playerRating = [[${playerRating}]];
+    for (let i = 1; i <= playerRating; i++) {
+        document.getElementById("star-choice" + i).src = "/images/taptiles/star-full.svg"
+    }
+</script>
+
+</body>
+</html>
